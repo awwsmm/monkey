@@ -12,3 +12,7 @@ Before writing any code
 - (optional) enable "format on save" in VS Code settings and restart VS Code
 - (optional) add `gofmt` pre-commit hook at `.git/hooks/pre-commit`
     - copy from https://github.com/golang/go/blob/release-branch.go1.1/misc/git/pre-commit
+
+### 1.3
+
+Parsing Unicode could be complex!
