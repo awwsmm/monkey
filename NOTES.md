@@ -16,3 +16,9 @@ Before writing any code
 ### 1.3
 
 Parsing Unicode could be complex!
+
+### 2.5
+
+What are all these string placeholders about? (`%q`, `%T`, etc.)
+
+https://gobyexample.com/string-formatting
