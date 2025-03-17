@@ -14,7 +14,7 @@ func identLevel() string {
 }
 
 func tracePrint(fs string) {
-	if true { // set to true to print traces
+	if false { // set to true to print traces
 		fmt.Printf("%s%s\n", identLevel(), fs)
 	}
 }
