@@ -17,8 +17,18 @@ Before writing any code
 
 Parsing Unicode could be complex!
 
+## 2
+
 ### 2.5
 
 What are all these string placeholders about? (`%q`, `%T`, etc.)
 
 https://gobyexample.com/string-formatting
+
+### 2.7
+
+This GitHub repo seems to contain all of the source code
+
+https://github.com/andriisoldatenko/monkey-go
+
+It's where I found `parser/parser_tracing.go`.
