@@ -32,3 +32,7 @@ This GitHub repo seems to contain all of the source code
 https://github.com/andriisoldatenko/monkey-go
 
 It's where I found `parser/parser_tracing.go`.
+
+### 2.8
+
+Note that `interface{}` can be replaced by `any` in newer versions of Go.
