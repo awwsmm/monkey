@@ -89,3 +89,11 @@ https://en.wikipedia.org/wiki/Principle_of_least_astonishment
 Other than prefix, infix, and postfix, does anyone know of any other kinds of operators?
 
 Error vs Fatal in tests? https://stackoverflow.com/a/24593252 (Fatal aborts early, Error does not)
+
+### 2.7
+
+This GitHub repo seems to contain all of the source code
+
+https://github.com/andriisoldatenko/monkey-go
+
+It's where I found `parser/parser_tracing.go`.
