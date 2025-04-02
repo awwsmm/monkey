@@ -72,8 +72,16 @@ Why are some Go function names uppercase? Uppercase functions are exported, lowe
 
 https://go.dev/tour/basics/3
 
+Note that this applies to fields of structs, as well.
+
 ### 2.5
 
 What are all these string placeholders about? (`%q`, `%T`, etc.)
 
 https://gobyexample.com/string-formatting
+
+### 2.6
+
+In the 1960s, a programming language called PL/I had become famous for (apparently) violating these precendence rules.
+
+https://en.wikipedia.org/wiki/Principle_of_least_astonishment
