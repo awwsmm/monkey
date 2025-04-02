@@ -161,3 +161,13 @@ const (
 	PREFIX      // -X or !X
 	CALL        // myFunction(X)
 )
+
+func (p *Parser) parseExpression(precedence int) ast.Expression {
+	prefix := p.prefixParseFns[p.curToken.Type]
+	if prefix == nil {
+		return nil
+	}
+	leftExp := prefix()
+
+	return leftExp
+}
