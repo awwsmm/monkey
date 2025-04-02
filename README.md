@@ -87,3 +87,5 @@ In the 1960s, a programming language called PL/I had become famous for (apparent
 https://en.wikipedia.org/wiki/Principle_of_least_astonishment
 
 Other than prefix, infix, and postfix, does anyone know of any other kinds of operators?
+
+Error vs Fatal in tests? https://stackoverflow.com/a/24593252 (Fatal aborts early, Error does not)
