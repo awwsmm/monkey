@@ -71,3 +71,9 @@ Recursive descent is just one kind of parser. Did anyone look into other kinds?
 Why are some Go function names uppercase? Uppercase functions are exported, lowercase ones are not.
 
 https://go.dev/tour/basics/3
+
+### 2.5
+
+What are all these string placeholders about? (`%q`, `%T`, etc.)
+
+https://gobyexample.com/string-formatting
