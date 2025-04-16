@@ -90,3 +90,15 @@ func evalMinusPrefixOperatorExpression(right object.Object) object.Object {
 	value := right.(*object.Integer).Value
 	return &object.Integer{Value: -value}
 }
+
+func evalInfixExpression(
+	operator string,
+	left, right object.Object,
+) object.Object {
+	switch {
+	case left.Type() == object.INTEGER_OBJ && right.Type() == object.INTEGER_OBJ:
+		return evalIntegerInfixExpression(operator, left, right)
+	default:
+		return NULL
+	}
+}
