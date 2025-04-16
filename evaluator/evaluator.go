@@ -52,3 +52,12 @@ func evalStatements(stmts []ast.Statement) object.Object {
 
 	return result
 }
+
+func evalPrefixExpression(operator string, right object.Object) object.Object {
+	switch operator {
+	case "!":
+		return evalBangOperatorExpression(right)
+	default:
+		return NULL
+	}
+}
