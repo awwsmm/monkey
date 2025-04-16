@@ -26,6 +26,11 @@ func Eval(node ast.Node) object.Object {
 		right := Eval(node.Right)
 		return evalPrefixExpression(node.Operator, right)
 
+	case *ast.InfixExpression:
+		left := Eval(node.Left)
+		right := Eval(node.Right)
+		return evalInfixExpression(node.Operator, left, right)
+
 	case *ast.IntegerLiteral:
 		return &object.Integer{Value: node.Value}
 
