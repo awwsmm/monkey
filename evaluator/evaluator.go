@@ -44,8 +44,7 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 		if isError(val) {
 			return val
 		}
-
-		// Huh? Now what?
+		env.Set(node.Name.Value, val)
 
 	// Expressions
 	case *ast.PrefixExpression:
