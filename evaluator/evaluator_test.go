@@ -225,6 +225,10 @@ func TestErrorHandling(t *testing.T) {
 		`,
 			"unknown operator: BOOLEAN + BOOLEAN",
 		},
+		{
+			"foobar",
+			"identifier not found: foobar",
+		},
 	}
 
 	for _, tt := range tests {
