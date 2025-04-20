@@ -1,6 +1,7 @@
 package evaluator
 
 import (
+	"fmt"
 	"monkey/ast"
 	"monkey/object"
 )
@@ -187,4 +188,8 @@ func evalIntegerInfixExpression(
 	default:
 		return NULL
 	}
+}
+
+func newError(format string, a ...interface{}) *object.Error {
+	return &object.Error{Message: fmt.Sprintf(format, a...)}
 }
