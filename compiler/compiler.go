@@ -63,3 +63,8 @@ type Bytecode struct {
 	Instructions code.Instructions
 	Constants    []object.Object
 }
+
+func (c *Compiler) addConstant(obj object.Object) int {
+	c.constants = append(c.constants, obj)
+	return len(c.constants) - 1
+}
