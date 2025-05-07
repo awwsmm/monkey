@@ -46,7 +46,7 @@ func (c *Compiler) Compile(node ast.Node) error {
 		}
 
 	case *ast.IntegerLiteral:
-		// TODO: What now?!
+		integer := &object.Integer{Value: node.Value}
 	}
 
 	return nil
