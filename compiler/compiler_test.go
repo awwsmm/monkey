@@ -30,6 +30,16 @@ func testInstructions(
 	return nil
 }
 
+func concatInstructions(s []code.Instructions) code.Instructions {
+	out := code.Instructions{}
+
+	for _, ins := range s {
+		out = append(out, ins...)
+	}
+
+	return out
+}
+
 func parse(input string) *ast.Program {
 	l := lexer.New(input)
 	p := parser.New(l)
