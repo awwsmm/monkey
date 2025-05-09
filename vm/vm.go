@@ -68,6 +68,12 @@ func (vm *VM) Run() error {
 				return err
 			}
 
+		case code.OpMinus:
+			err := vm.executeMinusOperator()
+			if err != nil {
+				return err
+			}
+
 		case code.OpPop:
 			vm.pop()
 
@@ -86,6 +92,17 @@ func (vm *VM) Run() error {
 	}
 
 	return nil
+}
+
+func (vm *VM) executeMinusOperator() error {
+	operand := vm.pop()
+
+	if operand.Type() != object.INTEGER_OBJ {
+		return fmt.Errorf("unsupported type for negation: %s", operand.Type())
+	}
+
+	value := operand.(*object.Integer).Value
+	return vm.push(&object.Integer{Value: -value})
 }
 
 func (vm *VM) executeBangOperator() error {
