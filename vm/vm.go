@@ -76,6 +76,31 @@ func (vm *VM) executeBinaryOperation(op code.Opcode) error {
 		leftType, rightType)
 }
 
+func (vm *VM) executeBinaryIntegerOperation(
+	op code.Opcode,
+	left, right object.Object,
+) error {
+	leftValue := left.(*object.Integer).Value
+	rightValue := right.(*object.Integer).Value
+
+	var result int64
+
+	switch op {
+	case code.OpAdd:
+		result = leftValue + rightValue
+	case code.OpSub:
+		result = leftValue - rightValue
+	case code.OpMul:
+		result = leftValue * rightValue
+	case code.OpDiv:
+		result = leftValue / rightValue
+	default:
+		return fmt.Errorf("unknown integer operator: %d", op)
+	}
+
+	return vm.push(&object.Integer{Value: result})
+}
+
 func (vm *VM) push(o object.Object) error {
 	if vm.sp >= StackSize {
 		return fmt.Errorf("stack overflow")
