@@ -82,6 +82,13 @@ func (vm *VM) Run() error {
 	return nil
 }
 
+func nativeBoolToBooleanObject(input bool) *object.Boolean {
+	if input {
+		return True
+	}
+	return False
+}
+
 func (vm *VM) executeIntegerComparison(
 	op code.Opcode,
 	left, right object.Object,
