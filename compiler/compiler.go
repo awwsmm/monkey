@@ -146,6 +146,15 @@ func (c *Compiler) Compile(node ast.Node) error {
 	return nil
 }
 
+func (c *Compiler) lastInstructionIsPop() bool {
+	return c.lastInstruction.Opcode == code.OpPop
+}
+
+func (c *Compiler) removeLastPop() {
+	c.instructions = c.instructions[:c.lastInstruction.Position]
+	c.lastInstruction = c.previousInstruction
+}
+
 func (c *Compiler) Bytecode() *Bytecode {
 	return &Bytecode{
 		Instructions: c.instructions,
