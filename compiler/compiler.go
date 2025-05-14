@@ -194,3 +194,9 @@ func (c *Compiler) addInstruction(ins []byte) int {
 	c.instructions = append(c.instructions, ins...)
 	return posNewInstruction
 }
+
+func (c *Compiler) replaceInstructions(pos int, newInstruction []byte) {
+	for i := 0; i < len(newInstruction); i++ {
+		c.instructions[pos+i] = newInstruction[i]
+	}
+}
