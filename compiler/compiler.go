@@ -200,3 +200,10 @@ func (c *Compiler) replaceInstructions(pos int, newInstruction []byte) {
 		c.instructions[pos+i] = newInstruction[i]
 	}
 }
+
+func (c *Compiler) changeOperand(opPos int, operand int) {
+	op := code.Opcode(c.instructions[opPos])
+	newInstruction := code.Make(op, operand)
+
+	c.replaceInstructions(opPos, newInstruction)
+}
