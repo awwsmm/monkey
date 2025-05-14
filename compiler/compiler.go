@@ -7,15 +7,25 @@ import (
 	"monkey/object"
 )
 
+type EmittedInstruction struct {
+	Opcode   code.Opcode
+	Position int
+}
+
 type Compiler struct {
 	instructions code.Instructions
 	constants    []object.Object
+
+	lastInstruction     EmittedInstruction
+	previousInstruction EmittedInstruction
 }
 
 func New() *Compiler {
 	return &Compiler{
-		instructions: code.Instructions{},
-		constants:    []object.Object{},
+		instructions:        code.Instructions{},
+		constants:           []object.Object{},
+		lastInstruction:     EmittedInstruction{},
+		previousInstruction: EmittedInstruction{},
 	}
 }
 
