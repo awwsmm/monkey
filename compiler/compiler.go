@@ -68,6 +68,10 @@ func (c *Compiler) Compile(node ast.Node) error {
 			return err
 		}
 
+		if c.lastInstructionIsPop() {
+			c.removeLastPop()
+		}
+
 	case *ast.PrefixExpression:
 		err := c.Compile(node.Right)
 		if err != nil {
