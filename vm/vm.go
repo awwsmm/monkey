@@ -36,6 +36,7 @@ func (vm *VM) StackTop() object.Object {
 
 var True = &object.Boolean{Value: true}
 var False = &object.Boolean{Value: false}
+var Null = &object.Null{}
 
 func (vm *VM) Run() error {
 	for ip := 0; ip < len(vm.instructions); ip++ {
