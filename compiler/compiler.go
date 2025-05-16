@@ -77,10 +77,22 @@ func (c *Compiler) Compile(node ast.Node) error {
 			c.changeOperand(jumpNotTruthyPos, afterConsequencePos)
 		} else {
 			// Emit an `OpJump` with a bogus value
-			c.emit(code.OpJump, 9999)
+			jumpPos := c.emit(code.OpJump, 9999)
 
 			afterConsequencePos := len(c.instructions)
 			c.changeOperand(jumpNotTruthyPos, afterConsequencePos)
+
+			err := c.Compile(node.Alternative)
+			if err != nil {
+				return err
+			}
+
+			if c.lastInstructionIsPop() {
+				c.removeLastPop()
+			}
+
+			afterAlternativePos := len(c.instructions)
+			c.changeOperand(jumpPos, afterAlternativePos)
 		}
 
 	case *ast.PrefixExpression:
