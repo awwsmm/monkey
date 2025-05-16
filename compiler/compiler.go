@@ -75,6 +75,12 @@ func (c *Compiler) Compile(node ast.Node) error {
 		if node.Alternative == nil {
 			afterConsequencePos := len(c.instructions)
 			c.changeOperand(jumpNotTruthyPos, afterConsequencePos)
+		} else {
+			// Emit an `OpJump` with a bogus value
+			c.emit(code.OpJump, 9999)
+
+			afterConsequencePos := len(c.instructions)
+			c.changeOperand(jumpNotTruthyPos, afterConsequencePos)
 		}
 
 	case *ast.PrefixExpression:
