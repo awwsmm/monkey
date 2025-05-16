@@ -50,6 +50,10 @@ func (vm *VM) Run() error {
 				return err
 			}
 
+		case code.OpJump:
+			pos := int(code.ReadUint16(vm.instructions[ip+1:]))
+			ip = pos - 1
+
 		case code.OpAdd, code.OpSub, code.OpMul, code.OpDiv:
 			err := vm.executeBinaryOperation(op)
 			if err != nil {
