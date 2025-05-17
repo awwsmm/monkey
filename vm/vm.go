@@ -119,6 +119,9 @@ func isTruthy(obj object.Object) bool {
 	case *object.Boolean:
 		return obj.Value
 
+	case *object.Null:
+		return false
+
 	default:
 		return true
 	}
