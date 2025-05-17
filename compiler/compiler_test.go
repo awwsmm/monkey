@@ -351,7 +351,7 @@ func TestGlobalLetStatements(t *testing.T) {
 			let one = 1;
 			one;
 			`,
-			expectedConstants: []interface{}{1, 2},
+			expectedConstants: []interface{}{1},
 			expectedInstructions: []code.Instructions{
 				code.Make(code.OpConstant, 0),
 				code.Make(code.OpSetGlobal, 0),
@@ -365,7 +365,7 @@ func TestGlobalLetStatements(t *testing.T) {
 			let two = one;
 			two;
 			`,
-			expectedConstants: []interface{}{1, 2},
+			expectedConstants: []interface{}{1},
 			expectedInstructions: []code.Instructions{
 				code.Make(code.OpConstant, 0),
 				code.Make(code.OpSetGlobal, 0),

@@ -180,6 +180,8 @@ func (c *Compiler) Compile(node ast.Node) error {
 		if !ok {
 			return fmt.Errorf("undefined variable %s", node.Value)
 		}
+
+		c.emit(code.OpGetGlobal, symbol.Index)
 	}
 
 	return nil
