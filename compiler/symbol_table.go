@@ -28,3 +28,8 @@ func (s *SymbolTable) Define(name string) Symbol {
 	s.numDefinitions++
 	return symbol
 }
+
+func (s *SymbolTable) Resolve(name string) (Symbol, bool) {
+	obj, ok := s.store[name]
+	return obj, ok
+}
