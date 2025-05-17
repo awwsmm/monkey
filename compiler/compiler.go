@@ -62,6 +62,7 @@ func (c *Compiler) Compile(node ast.Node) error {
 		if err != nil {
 			return err
 		}
+		symbol := c.symbolTable.Define(node.Name.Value)
 
 	case *ast.IfExpression:
 		err := c.Compile(node.Condition)
