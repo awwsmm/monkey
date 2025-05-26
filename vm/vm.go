@@ -176,6 +176,18 @@ func (vm *VM) Run() error {
 	return nil
 }
 
+func (vm *VM) executeArrayIndex(array, index object.Object) error {
+	arrayObject := array.(*object.Array)
+	i := index.(*object.Integer).Value
+	max := int64(len(arrayObject.Elements) - 1)
+
+	if i < 0 || i > max {
+		return vm.push(Null)
+	}
+
+	return vm.push(arrayObject.Elements[i])
+}
+
 func (vm *VM) executeIndexExpression(left, index object.Object) error {
 	switch {
 	case left.Type() == object.ARRAY_OBJ && index.Type() == object.INTEGER_OBJ:
