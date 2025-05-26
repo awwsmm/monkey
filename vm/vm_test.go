@@ -285,7 +285,7 @@ func TestHashLiterals(t *testing.T) {
 			},
 		},
 		{
-			"{1 + 1: 2 * 2; 3 + 3: 4 * 4}",
+			"{1 + 1: 2 * 2, 3 + 3: 4 * 4}",
 			map[object.HashKey]int64{
 				(&object.Integer{Value: 2}).HashKey(): 4,
 				(&object.Integer{Value: 6}).HashKey(): 16,
