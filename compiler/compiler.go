@@ -254,6 +254,10 @@ func (c *Compiler) Compile(node ast.Node) error {
 	return nil
 }
 
+func (c *Compiler) currentInstructions() code.Instructions {
+	return c.scopes[c.scopeIndex].instructions
+}
+
 func (c *Compiler) lastInstructionIsPop() bool {
 	return c.lastInstruction.Opcode == code.OpPop
 }
