@@ -302,8 +302,11 @@ func (c *Compiler) setLastInstruction(op code.Opcode, pos int) {
 }
 
 func (c *Compiler) addInstruction(ins []byte) int {
-	posNewInstruction := len(c.instructions)
-	c.instructions = append(c.instructions, ins...)
+	posNewInstruction := len(c.currentInstructions())
+	updatedInstructions := append(c.currentInstructions(), ins...)
+
+	c.scopes[c.scopeIndex].instructions = updatedInstructions
+
 	return posNewInstruction
 }
 
