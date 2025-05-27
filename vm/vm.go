@@ -18,6 +18,23 @@ type VM struct {
 	sp    int // Always points to the next value. Top of stack is stack[sp-1]
 
 	globals []object.Object
+
+	frames      []*Frame
+	framesIndex int
+}
+
+func (vm *VM) currentFrame() *Frame {
+	return vm.frames[vm.framesIndex-1]
+}
+
+func (vm *VM) pushFrame(f *Frame) {
+	vm.frames[vm.framesIndex] = f
+	vm.framesIndex++
+}
+
+func (vm *VM) popFrame() *Frame {
+	vm.framesIndex--
+	return vm.frames[vm.framesIndex]
 }
 
 func New(bytecode *compiler.Bytecode) *VM {
