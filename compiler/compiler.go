@@ -97,7 +97,7 @@ func (c *Compiler) Compile(node ast.Node) error {
 			return err
 		}
 
-		if c.lastInstructionIs() {
+		if c.lastInstructionIs(code.OpPop) {
 			c.removeLastPop()
 		}
 
@@ -115,7 +115,7 @@ func (c *Compiler) Compile(node ast.Node) error {
 				return err
 			}
 
-			if c.lastInstructionIs() {
+			if c.lastInstructionIs(code.OpPop) {
 				c.removeLastPop()
 			}
 		}
