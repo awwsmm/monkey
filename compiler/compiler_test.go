@@ -710,7 +710,7 @@ func TestFunctionCalls(t *testing.T) {
 		},
 		{
 			input: `
-			let noArg = fn() { 24 }();
+			let noArg = fn() { 24 };
 			noArg();
 			`,
 			expectedConstants: []interface{}{
