@@ -11,8 +11,7 @@ const StackSize = 2048
 const GlobalsSize = 65536
 
 type VM struct {
-	constants    []object.Object
-	instructions code.Instructions
+	constants []object.Object
 
 	stack []object.Object
 	sp    int // Always points to the next value. Top of stack is stack[sp-1]
