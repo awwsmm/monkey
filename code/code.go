@@ -159,7 +159,7 @@ func ReadOperands(def *Definition, ins Instructions) ([]int, int) {
 		case 2:
 			operands[i] = int(ReadUint16(ins[offset:]))
 		case 1:
-			operands[i] = int(ReadUInt8(ins[offset:]))
+			operands[i] = int(ReadUint8(ins[offset:]))
 		}
 
 		offset += width
@@ -172,4 +172,4 @@ func ReadUint16(ins Instructions) uint16 {
 	return binary.BigEndian.Uint16(ins)
 }
 
-func ReadUInt8(ins Instructions) uint8 { return uint8(ins[0]) }
+func ReadUint8(ins Instructions) uint8 { return uint8(ins[0]) }
