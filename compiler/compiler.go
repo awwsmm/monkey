@@ -386,6 +386,7 @@ func (c *Compiler) enterScope() {
 		previousInstruction: EmittedInstruction{},
 	}
 	c.scopes = append(c.scopes, scope)
+	c.symbolTable = NewEnclosedSymbolTable(c.symbolTable)
 	c.scopeIndex++
 }
 
