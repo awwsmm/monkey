@@ -3,8 +3,9 @@ package compiler
 type SymbolScope string
 
 const (
-	LocalScope  SymbolScope = "LOCAL"
-	GlobalScope SymbolScope = "GLOBAL"
+	LocalScope   SymbolScope = "LOCAL"
+	GlobalScope  SymbolScope = "GLOBAL"
+	BuiltinScope SymbolScope = "BUILTIN"
 )
 
 type Symbol struct {
