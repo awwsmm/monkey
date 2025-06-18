@@ -52,7 +52,16 @@ func (s *SymbolTable) Resolve(name string) (Symbol, bool) {
 	obj, ok := s.store[name]
 	if !ok && s.Outer != nil {
 		obj, ok = s.Outer.Resolve(name)
-		return obj, ok
+		if !ok {
+			return obj, ok
+		}
+
+		if obj.Scope == GlobalScope || obj.Scope == BuiltinScope {
+			return obj, ok
+		}
+
+		free := s.defineFree(obj)
+		return free, true
 	}
 	return obj, ok
 }
