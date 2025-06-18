@@ -637,7 +637,7 @@ func TestClosures(t *testing.T) {
 			let newClosure = fn(a) {
 				fn() { a; };
 			};
-			let closure = new Closure(99);
+			let closure = newClosure(99);
 			closure();
 			`,
 			expected: 99,
