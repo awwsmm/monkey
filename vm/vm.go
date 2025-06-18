@@ -270,16 +270,16 @@ func (vm *VM) Run() error {
 	return nil
 }
 
-func (vm *VM) callFunction(fn *object.CompiledFunction, numArgs int) error {
-	if numArgs != fn.NumParameters {
+func (vm *VM) callClosure(cl *object.Closure, numArgs int) error {
+	if numArgs != cl.Fn.NumParameters {
 		return fmt.Errorf("wrong number of arguments: want=%d, got=%d",
-			fn.NumParameters, numArgs)
+			cl.Fn.NumParameters, numArgs)
 	}
 
-	frame := NewFrame(fn, vm.sp-numArgs)
+	frame := NewFrame(cl, vm.sp-numArgs)
 	vm.pushFrame(frame)
 
-	vm.sp = frame.basePointer + fn.NumLocals
+	vm.sp = frame.basePointer + cl.Fn.NumLocals
 
 	return nil
 }
@@ -518,12 +518,12 @@ func (vm *VM) LastPoppedStackElem() object.Object {
 func (vm *VM) executeCall(numArgs int) error {
 	callee := vm.stack[vm.sp-1-numArgs]
 	switch callee := callee.(type) {
-	case *object.CompiledFunction:
-		return vm.callFunction(callee, numArgs)
+	case *object.Closure:
+		return vm.callClosure(callee, numArgs)
 	case *object.Builtin:
 		return vm.callBuiltin(callee, numArgs)
 	default:
-		return fmt.Errorf("calling non-function and not-built-in")
+		return fmt.Errorf("calling non-closure and not-built-in")
 	}
 }
 
