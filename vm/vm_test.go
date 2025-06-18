@@ -629,3 +629,20 @@ func TestBuiltinFunctions(t *testing.T) {
 
 	runVmTests(t, tests)
 }
+
+func TestClosures(t *testing.T) {
+	tests := []vmTestCase{
+		{
+			input: `
+			let newClosure = fn(a) {
+				fn() { a; };
+			};
+			let closure = new Closure(99);
+			closure();
+			`,
+			expected: 99,
+		},
+	}
+
+	runVmTests(t, tests)
+}
