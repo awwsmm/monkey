@@ -280,15 +280,20 @@ func (vm *VM) Run() error {
 	return nil
 }
 
-func (vm *VM) pushClosure(constIndex int) error {
+func (vm *VM) pushClosure(constIndex int, numFree int) error {
 	constant := vm.constants[constIndex]
 	function, ok := constant.(*object.CompiledFunction)
-
 	if !ok {
 		return fmt.Errorf("not a function: %+v", constant)
 	}
 
-	closure := &object.Closure{Fn: function}
+	free := make([]object.Object, numFree)
+	for i := 0; i < numFree; i++ {
+		free[i] = vm.stack[vm.sp-numFree+i]
+	}
+	vm.sp = vm.sp - numFree
+
+	closure := &object.Closure{Fn: function, Free: free}
 	return vm.push(closure)
 }
 
