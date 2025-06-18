@@ -642,6 +642,27 @@ func TestClosures(t *testing.T) {
 			`,
 			expected: 99,
 		},
+		{
+			input: `
+			let newAdder = fn(a, b) {
+			fn(c) { a + b + c };
+			};
+			let adder = newAdder(1, 2);
+			adder(8);
+			`,
+			expected: 11,
+		},
+		{
+			input: `
+			let newAdder = fn(a, b) {
+			let c = a + b;
+			fn(d) { c + d };
+			};
+			let adder = newAdder(1, 2);
+			adder(8);
+			`,
+			expected: 11,
+		},
 	}
 
 	runVmTests(t, tests)
